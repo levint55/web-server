@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var port = 3000;
+var port = process.env.PORT  || 3000;
 
 var middleware = require("./middleware.js");
 
@@ -13,5 +13,5 @@ app.get("/about", middleware.requireAuthentication, (req, res) => {
 app.use(express.static(__dirname + "/public"));
 
 app.listen(port, () => {
-  console.log(`Express server started http://localhost:${port}/`);
+  console.log(`Express server started on port ${port}`);
 });
